@@ -1,0 +1,5 @@
+You survived the haunted house.
+
+The exit is hidden.
+
+Use a command that reveals files and folders that normally do not appear.

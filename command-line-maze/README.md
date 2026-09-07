@@ -17,12 +17,4 @@ Start by reading:
 
 `entrance.txt`
 
-the other file options:
-
-- final-destination
-- insidious
-- saw
-- scream
-- the-conjuring
-
 Good luck, and try not to get caught.

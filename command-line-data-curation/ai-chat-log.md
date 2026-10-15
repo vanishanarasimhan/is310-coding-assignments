@@ -1,0 +1,1 @@
+used chatgpt to help generate some of the code in the index file

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jinn Stories Across Cultures</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 700px; margin: 40px auto; padding: 0 20px; line-height: 1.5; }
+    label { display: block; margin-top: 12px; font-weight: bold; }
+    input, textarea { display: block; box-sizing: border-box; width: 100%; padding: 9px; margin-top: 5px; font: inherit; }
+    button { margin-top: 15px; margin-right: 8px; padding: 10px 15px; cursor: pointer; }
+    .story { border: 1px solid #ccc; border-radius: 5px; padding: 12px; margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <h1>Jinn Stories Across Cultures</h1>
+  <p>Add a jinn story and where it comes from. You can add as many stories as you want.</p>
+
+  <form id="storyForm">
+    <label for="storyName">Story name</label>
+    <input id="storyName" required>
+
+    <label for="culture">Culture / origin</label>
+    <input id="culture" required>
+
+    <label for="description">Short description</label>
+    <textarea id="description" required></textarea>
+
+    <label for="source">Source</label>
+    <input id="source" required>
+
+    <button type="submit">Add Story</button>
+  </form>
+
+  <h2>Your Stories</h2>
+  <p id="storyCount">0 stories added</p>
+  <div id="storyList"></div>
+  <button id="downloadButton" type="button" disabled>Download JSON</button>
+
+  <script>
+    const stories = [];
+    const form = document.getElementById("storyForm");
+    const storyList = document.getElementById("storyList");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const story = {
+        story_name: document.getElementById("storyName").value.trim(),
+        culture: document.getElementById("culture").value.trim(),
+        description: document.getElementById("description").value.trim(),
+        source: document.getElementById("source").value.trim()
+      };
+
+      if (!story.story_name || !story.culture || !story.description || !story.source) {
+        alert("Please fill out every field.");
+        return;
+      }
+
+      stories.push(story);
+
+      const card = document.createElement("div");
+      card.className = "story";
+      const title = document.createElement("h3");
+      title.textContent = story.story_name;
+      card.appendChild(title);
+
+      for (const [label, value] of [
+        ["Culture / origin", story.culture],
+        ["Description", story.description],
+        ["Source", story.source]
+      ]) {
+        const line = document.createElement("p");
+        const bold = document.createElement("strong");
+        bold.textContent = label + ": ";
+        line.appendChild(bold);
+        line.appendChild(document.createTextNode(value));
+        card.appendChild(line);
+      }
+      storyList.appendChild(card);
+      document.getElementById("storyCount").textContent = stories.length + " stories added";
+      document.getElementById("downloadButton").disabled = false;
+      form.reset();
+    });
+
+    document.getElementById("downloadButton").addEventListener("click", function () {
+      const file = new Blob([JSON.stringify(stories, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(file);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "jinn_stories.json";
+      link.click();
+      URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>

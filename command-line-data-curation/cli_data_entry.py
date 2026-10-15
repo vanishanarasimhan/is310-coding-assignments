@@ -23,7 +23,7 @@ stories = [
 
 
 def show_stories(story_list):
-    table = Table(title="Jinn Stories Across Cultures")
+    table = Table(title="Supernatural Stories Across Cultures")
     table.add_column("Story Name", style="cyan")
     table.add_column("Culture / Origin", style="magenta")
     table.add_column("Description")
@@ -47,7 +47,7 @@ def ask_field(question):
     return answer
 
 
-console.print("Here are two example jinn stories:", style="bold cyan")
+console.print("Here are two example supernatural stories:", style="bold cyan")
 show_stories(stories)
 
 if file_path.exists():
@@ -56,7 +56,7 @@ if file_path.exists():
     console.print("\nLoaded your previously saved stories.", style="green")
 
 while True:
-    console.print("\n[bold]Add a jinn story[/bold]")
+    console.print("\n[bold]Add a story[/bold]")
 
     while True:
         story = {

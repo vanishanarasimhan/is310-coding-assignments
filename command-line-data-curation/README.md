@@ -1,10 +1,10 @@
-# Jinn Stories Across Cultures
+# Supernatural Stories Across Cultures
 
 This project is about collecting different jinn (spirit) stories from cultures around the world. Users can enter the name of a story, where it comes from, a short description, and the source.
 
 ## Python CLI
 
-The Python script allows users to add jinn stories through the terminal. It first shows a few example stories and then asks users to enter their own. Once they confirm that everything is correct, the information is saved in a JSON file.
+The Python script allows users to add stories through the terminal. It first shows a few example stories and then asks users to enter their own. Once they confirm that everything is correct, the information is saved in a JSON file.
 
 ## How to Run
 
